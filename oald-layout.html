@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height:100%;
+            margin:0px;
+            font-size:0px;
+        }
+        div{
+            box-sizing:border-box;
+            width:20%;
+            height:100%;
+            display:inline-block;
+            border:4px rgba(255,255,255) solid;
+        }
+        .first{
+            background:#028090;
+            border-right:2px rgba(255,255,255) solid;
+        }
+        .first ~ div:nth-of-type(2){
+            width:40%;
+            background:#114B5F;      
+        }
+        .first ~ div:nth-child(3){
+            background:#456990;
+            border-right:2px rgba(255,255,255) solid;
+            border-left:2px rgba(255,255,255) solid;
+        }
+        .first ~ div:nth-of-type(4){
+            background:#114B5F;
+            border-left:2px rgba(255,255,255) solid;
+        }
+        .two div{
+            display:block;
+            width:100%;
+        }
+        .two{
+            border-right:2px rgba(255,255,255) solid;
+            border-left:2px rgba(255,255,255) solid;
+        }
+        .two div:nth-child(1){
+            height:20%;
+            background:#E4FDE1;
+            border:0px rgba(255,255,255) solid;
+            
+           
+        }
+        .two div:nth-child(2){
+            height:80%;
+            background:#F45B69;
+            border:0px rgba(255,255,255) solid;
+            border-top:4px rgba(255,255,255) solid;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="first"></div>
+    <div class="two">
+        <div></div>
+        <div></div>
+    </div>
+    <div></div>
+    <div></div>
+</body>
+</html>

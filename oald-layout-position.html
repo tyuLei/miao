@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height:100%;
+            margin:0px;
+            font-size:0px;
+        }
+        div{
+            width:20%;
+            height:100%;
+        }
+        .first{
+            background:#028090;
+            position:absolute;
+        }
+        .first ~ div:nth-of-type(2){
+            width:40%;
+            background:#114B5F;
+            position:absolute;
+            left:20%;      
+        }
+        .first ~ div:nth-child(3){
+            background:#456990;
+            position:absolute; 
+            left:60%;
+        }
+        .first ~ div:nth-of-type(4){
+            background:#114B5F;
+            position:absolute;
+            left:80%; 
+        }
+        .two div{
+            display:block;
+            width:100%;
+        }
+        .two div:nth-child(1){
+            height:20%;
+            background:#E4FDE1;
+        }
+        .two div:nth-child(2){
+            height:80%;
+            background:#F45B69;
+        }
+    </style>
+</head>
+<body>
+    <div class="first"></div>
+    <div class="two">
+        <div></div>
+        <div></div>
+    </div>
+    <div></div>
+    <div></div>
+</body>
+</html>
