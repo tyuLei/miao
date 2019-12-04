@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,nav{
+            height:100%;
+            width:100%;
+        }
+        nav{
+            position:relative;
+    
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom: 0;
+            margin:auto;
+            background:url(QQ20191204-0.png);
+        }
+        div:hover{
+            background-position:-2800px 0;
+            transition-timing-function:steps(28,start) ;
+            transition-duration: .4666s;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+    <div></div>
+</nav>
+</body>
+</html>
