@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+label{
+  display:inline-block;
+  width:42px;
+  height:42px;
+  border-radius:80px;
+  border:4px solid;
+  position:relative;
+  font-size:0x;
+  margin:5px
+}
+
+label::before{
+  content:"";
+  width:0px;
+  height: 0px;
+  background:#57bc69;
+  position:absolute;
+  border-radius:80px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin:auto;
+  transition:.5s;
+}
+input:checked + label::before{
+  content:"";
+  width:32px;
+  height: 32px;
+  border-radius:80px;
+}
+input:checked + label{
+  border:4px solid #57bc69;
+}
+input{
+  display:none
+}
+div{
+    font-size:0;
+}
+background-image
+    </style>
+</head>
+<body>
+        <div>
+                <input type="radio" id="a" name="type">
+                <label for="a"></label>
+                <input type="radio" id="b" name="type">
+               <label for="b"></label>
+                <input type="radio" id="c" name="type">
+               <label for="c"></label>
+             </div>
+</body>
+</html>
