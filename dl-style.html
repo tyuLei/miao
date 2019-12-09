@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        dl{
+            width: 900px;
+
+            
+            
+        }
+        dt{
+            display: block;
+            height: 100px;
+            border:2px solid red;
+            float: left;
+            width:140px;
+            box-sizing:border-box;
+            xmargin-bottom: 100px;
+        }
+        dd{
+            display:inline-block;
+            height: 100px;
+            width: 140px;
+            border:2px solid red;
+            float: left;
+            margin-left: 10px;
+            margin-bottom: 10px; 
+            box-sizing:border-box;          
+        }
+        dt ~ dd:nth-of-type(6){
+            margin-left:150px;
+        }
+        dt ~ dd:nth-of-type(8){
+            margin-right:280px;
+        }
+        dt ~ dd:nth-of-type(13){
+            margin-left:150px;
+        }
+        dt ~ dd:nth-of-type(12){
+            width: 280px;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+    <dt> </dt>
+        <dd>1</dd>
+        <dd>2</dd>
+        <dd>3</dd>
+        <dd>4</dd>
+        <dd>5</dd>
+        <dd>6</dd>
+        <dd>7</dd>
+        <dd>8</dd>
+   
+    <dt></dt>
+        <dd>9</dd>
+        <dd>10</dd>
+        <dd>11</dd>
+        <dd>12</dd>
+        <dd>13</dd>
+        <dd>14</dd>
+        <dd>15</dd>
+    
+</dl>
+</body>
+</html>
