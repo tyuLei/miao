@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+            display:table;
+            border-collapse:separate;
+            width:100%;
+            box-sizing:border-box;
+            
+          
+          }
+          .input-group-addon{
+            display:table-cell;
+             border:3px solid red;
+             border-radius:5px 0px 0px 5px;
+            width:1px;
+          }
+          .form-control{
+            display:table-cell;
+            width:99%;
+            font:inherit;
+            border:none;
+            border:3px solid red;
+            border-left:0px;
+            border-radius:0px 5px 5px 0px;
+          }
+          </style>
+</head>
+<body>
+        <div>
+        <span class="input-group-addon" id="basic-addon1">@123</span>
+        <input type="text" class="form-control" placeholder="Username"
+        aria-describedby="basic-addon1">
+        </div>
+</body>
+</html>

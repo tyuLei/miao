@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            overflow: hidden;        
+        }
+        tr:hover{
+            background:pink;
+        }
+        td{
+            position: relative;           
+        }
+        td:hover::before{
+            content:'';
+            position:absolute;
+            height:1000px;
+            width:100%;
+            top:-500px;
+            background: burlywood;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>Lorem, ipsum.</td>
+                <td>At, porro!</td>
+                <td>Debitis, ad?</td>
+                <td>Consectetur, quasi.</td>
+                <td>Nam, velit.</td>
+                <td>Quaerat, ad!</td>
+            </tr>
+            <tr>
+                <td>Provident, eveniet.</td>
+                <td>Mollitia, dolores?</td>
+                <td>Commodi, alias!</td>
+                <td>Ex, laborum?</td>
+                <td>Repellendus, modi!</td>
+                <td>Vitae, ipsa?</td>
+            </tr>
+            <tr>
+                <td>Rerum, quidem.</td>
+                <td>Adipisci, doloremque.</td>
+                <td>Mollitia, perferendis.</td>
+                <td>Aliquid, blanditiis?</td>
+                <td>Vero, neque.</td>
+                <td>Laudantium, aut.</td>
+            </tr>
+            <tr>
+                <td>Suscipit, optio!</td>
+                <td>Provident, amet.</td>
+                <td>Perspiciatis, sunt.</td>
+                <td>Eligendi, laudantium!</td>
+                <td>Earum, veniam!</td>
+                <td>Veritatis, fugit.</td>
+            </tr>
+            <tr>
+                <td>Laboriosam, quibusdam!</td>
+                <td>Debitis, voluptas?</td>
+                <td>Sequi, alias!</td>
+                <td>Nesciunt, aut?</td>
+                <td>Iure, libero.</td>
+                <td>Adipisci, ipsa.</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
