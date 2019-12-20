@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    ul {
+      width: 100px;
+      height: 100px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      transform-style: preserve-3d;
+      xopacity: 0.3;
+      xperspective: 6000px;
+      transition: 4s;
+      transform-origin: center centerd;
+      transform: rotatey(135deg) rotatez(135deg);
+    }
+
+    li {
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      position: absolute;
+    }
+
+    li:first-child {
+      background: red;
+      perspective: 600;
+    }
+
+    li:nth-child(2) {
+      background: blue;
+      transform: rotatex(90deg);
+      transform-origin: left bottom;
+
+    }
+
+    li:nth-child(3) {
+      background: yellow;
+      transform-origin: left bottom;
+      transform: rotatey(90deg);
+    }
+
+    li:nth-child(4) {
+      background: pink;
+      transform-origin: left bottom;
+      transform: rotatex(90deg) translatez(100px);
+    }
+
+    li:nth-child(5) {
+      background: purple;
+      transform-origin: left bottom;
+      transform: translatez(-100px);
+    }
+
+    li:nth-child(6) {
+      background: maroon;
+      transform-origin: left bottom;
+      transform: rotatey(90deg) translatez(100px);
+    }
+
+    ul:hover {
+      transform: rotatey(360deg) rotatez(360deg);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+
+</html>
