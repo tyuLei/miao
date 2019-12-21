@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      xbackground-color: rgba(0, 0, 0, 0.1);
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+    }
+
+    @keyframes round {
+      0% {
+        transform: rotate(0deg);
+        transform-origin: 2px 80px;
+      }
+
+      100% {
+        transform: rotate(360deg);
+        transform-origin: 2px 80px;
+      }
+    }
+
+    section {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      background: #cecece;
+    }
+
+    .clock-face {
+      width: 200px;
+      height: 200px;
+      border-radius: 200px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: #fff;
+    }
+
+    p {
+      width: 2em;
+      height: 2em;
+      position: absolute;
+      margin: auto;
+
+      right: 0;
+      left: 0;
+      text-align: center;
+      line-height: 2em;
+    }
+
+    p:nth-child(1) {
+      transform-origin: 1em 100px;
+      transform: rotate(30deg);
+    }
+
+    p:nth-child(2) {
+      transform-origin: 1em 100px;
+      transform: rotate(60deg);
+    }
+
+    p:nth-child(3) {
+      transform-origin: 1em 100px;
+      transform: rotate(90deg);
+    }
+
+    p:nth-child(4) {
+      transform-origin: 1em 100px;
+      transform: rotate(120deg);
+    }
+
+    p:nth-child(5) {
+      transform-origin: 1em 100px;
+      transform: rotate(150deg);
+    }
+
+    p:nth-child(6) {
+      transform-origin: 1em 100px;
+      transform: rotate(180deg);
+    }
+
+    p:nth-child(7) {
+      transform-origin: 1em 100px;
+      transform: rotate(210deg);
+    }
+
+    p:nth-child(8) {
+      transform: rotate(240deg);
+      transform-origin: 1em 100px;
+    }
+
+    p:nth-child(9) {
+      transform-origin: 1em 100px;
+      transform: rotate(270deg);
+    }
+
+    p:nth-child(10) {
+      transform-origin: 1em 100px;
+      transform: rotate(300deg);
+    }
+
+    p:nth-child(11) {
+      transform-origin: 1em 100px;
+      transform: rotate(330deg);
+    }
+
+    p:nth-child(12) {
+      transform-origin: 1em 100px;
+      transform: rotate(360deg);
+    }
+
+    p:nth-child(1) span {
+      transform: rotate(330deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(2) span {
+      transform: rotate(300deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(3) span {
+      transform: rotate(270deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(4) span {
+      transform: rotate(240deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(5) span {
+      transform: rotate(210deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(6) span {
+      transform: rotate(180deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(7) span {
+      transform: rotate(150deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(8) span {
+      transform: rotate(120deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(9) span {
+      transform: rotate(90deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(10) span {
+      transform: rotate(60deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    p:nth-child(11) span {
+      transform: rotate(30deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    main {
+      width: 12px;
+      height: 12px;
+      border-radius: 200px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: #000;
+    }
+
+    .minutes {
+      width: 6px;
+      height: 80px;
+      position: absolute;
+      margin: auto;
+      top: 20px;
+      right: 0;
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 3px 80px;
+      background: #000;
+
+    }
+
+    .second {
+      width: 4px;
+      height: 100px;
+      position: absolute;
+      margin: auto;
+      top: 20px;
+      right: 0;
+      left: 0;
+      background: #000;
+      transform-origin: 2px 80px;
+      xtransform: rotate(45deg);
+      animation: round 60s infinite steps(60);
+
+    }
+
+    .hour-hand {
+      width: 8px;
+      height: 40px;
+      position: absolute;
+      margin: auto;
+      top: 60px;
+      right: 0;
+      left: 0;
+      transform: rotate(330deg);
+      transform-origin: 4px 40px;
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="clock-face">
+      <p><span>1</span></p>
+      <p><span>2</span></p>
+      <p><span>3</span></p>
+      <p><span>4</span></p>
+      <p><span>5</span></p>
+      <p><span>6</span></p>
+      <p><span>7</span></p>
+      <p><span>8</span></p>
+      <p><span>9</span></p>
+      <p><span>10</span></p>
+      <p><span>11</span></p>
+      <p><span>12</span></p>
+      <main></main>
+      <div class="minutes"></div>
+      <div class="second"></div>
+      <div class="hour-hand"></div>
+    </div>
+  </section>
+</body>
+
+</html>
