@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    function isLeapYear() {
+      var pYear = window.myForm.theYear.value;
+      if (!isNaN(parseInt(pYear))) {
+        if ((pYear % 4 == 0 && pYear % 100 != 0) || (pYear % 100 == 0 && pYear % 400 == 0)) {
+          console.log(pYear + "是闰年！");
+        } else {
+          window.alert(pYear + "不是闰年！");
+        }
+      } else {
+        console.log("请输入正确年份！");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form name="myForm">
+    <p>请输入年份：
+    </p>
+    <input name="theYear" type="text">
+    <input name="select" type="button" value="点此判断是否是闰年" onClick="isLeapYear()">
+  </form>
+</body>
+
+</html>

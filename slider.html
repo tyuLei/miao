@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      xbackground: rgba(0, 0, 0, 0.1)
+    }
+
+    @keyframes sliders {
+      from {
+        left: 0;
+      }
+
+      to {
+        left: 100%;
+      }
+    }
+
+    main {
+      width: 400px;
+      height: 300px;
+      position: relative;
+      font-size: 0;
+      padding: 20px;
+      margin: auto;
+      background: rgb(202, 247, 255);
+      border: 10px solid black;
+    }
+
+    section div {
+      width: 100px;
+      height: 300px;
+      float: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    span {
+      width: 100px;
+      height: 300px;
+      display: inline-block;
+      position: absolute;
+      left: -100%;
+      transition: 1s;
+      animation: sliders 1s;
+    }
+
+
+    #z:checked~section div span:nth-child(1),
+    #x:checked~section div span:nth-child(2),
+    #c:checked~section div span:nth-child(3),
+    #v:checked~section div span:nth-child(4) {
+      animation: none;
+      left: 0;
+      z-index: 100;
+    }
+
+    section div:nth-child(1) span:nth-child(1) {
+      background-image: url("slider-photo/slider1.png");
+      background-size: cover;
+      background-position: 0;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(1) span:nth-child(2) {
+      background-image: url("slider-photo/slider2.png");
+      background-size: cover;
+      background-position: 0;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(1) span:nth-child(3) {
+      background-image: url("slider-photo/slider3.png");
+      background-size: cover;
+      background-position: 0;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(1) span:nth-child(4) {
+      background-image: url("slider-photo/slider4.png");
+      background-size: cover;
+      background-position: 0;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(2) span:nth-child(1) {
+      background-image: url("slider-photo/slider1.png");
+      background-size: cover;
+      background-position: -100px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(2) span:nth-child(2) {
+      background-image: url("slider-photo/slider2.png");
+      background-size: cover;
+      background-position: -100px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(2) span:nth-child(3) {
+      background-image: url("slider-photo/slider3.png");
+      background-size: cover;
+      background-position: -100px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(2) span:nth-child(4) {
+      background-image: url("slider-photo/slider4.png");
+      background-size: cover;
+      background-position: -100px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(3) span:nth-child(1) {
+      background-image: url("slider-photo/slider1.png");
+      background-size: cover;
+      background-position: -200px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(3) span:nth-child(2) {
+      background-image: url("slider-photo/slider2.png");
+      background-size: cover;
+      background-position: -200px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(3) span:nth-child(3) {
+      background-image: url("slider-photo/slider3.png");
+      background-size: cover;
+      background-position: -200px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(3) span:nth-child(4) {
+      background-image: url("slider-photo/slider4.png");
+      background-size: cover;
+      background-position: -200px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(4) span:nth-child(1) {
+      background-image: url("slider-photo/slider1.png");
+      background-size: cover;
+      background-position: -300px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(4) span:nth-child(2) {
+      background-image: url("slider-photo/slider2.png");
+      background-size: cover;
+      background-position: -300px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(4) span:nth-child(3) {
+      background-image: url("slider-photo/slider3.png");
+      background-size: cover;
+      background-position: -300px;
+      background-repeat: no-repeat;
+    }
+
+    section div:nth-child(4) span:nth-child(4) {
+      background-image: url("slider-photo/slider4.png");
+      background-size: cover;
+      background-position: -300px;
+      background-repeat: no-repeat;
+    }
+
+    .labels {
+      position: absolute;
+      top: 285px;
+      display: flex;
+      justify-content: space-around;
+      z-index: 101;
+      width: 400px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    label::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 16px;
+
+      background: rgba(255, 255, 255, 0.8);
+      vertical-align: middle;
+      display: inline-block;
+      visibility: hidden;
+    }
+
+    #z:checked~div label:nth-child(1)::before,
+    #x:checked~div label:nth-child(2)::before,
+    #c:checked~div label:nth-child(3)::before,
+    #v:checked~div label:nth-child(4)::before {
+      visibility: visible;
+    }
+
+    label {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      vertical-align: middle;
+      font-size: 0;
+      line-height: 20px;
+    }
+
+    input {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <input type="radio" checked name="a" id="z">
+    <input type="radio" name="a" id="x">
+    <input type="radio" name="a" id="c">
+    <input type="radio" name="a" id="v">
+    <div class="labels">
+      <label for="z"></label>
+      <label for="x"></label>
+      <label for="c"></label>
+      <label for="v"></label>
+    </div>
+    <section>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

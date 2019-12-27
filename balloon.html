@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+
+  <style>
+    button {
+      display: block;
+      margin-top: 50px;
+      margin-left: 50px;
+      background: blue;
+      color: white;
+      font-size: 30px;
+      border-radius: .2em;
+      position: relative;
+      font-size: 16px;
+    }
+
+    [aria-label]::before {
+      content: attr(aria-label);
+      padding: 6px 10px;
+      background: black;
+      position: absolute;
+      border-radius: .1em;
+      bottom: 100%;
+      left: 50%;
+      transform: translatex(-50%) translatey(-7px);
+      transition: 2s;
+      opacity: 0;
+    }
+
+    [data-balloon-pos="right"]::before {
+      left: 100%;
+      top: 50%;
+      bottom: auto;
+      transform: translatey(-50%);
+      transition: 2s;
+      opacity: 0;
+    }
+
+    [data-balloon-pos="bottom"]::before {
+      left: 50%;
+      top: 100%;
+      bottom: auto;
+      transform: translatex(-50%);
+      transition: 2s;
+      opacity: 0;
+    }
+
+    [data-balloon-pos="left"]::before {
+      left: auto;
+      right: 100%;
+      top: 50%;
+      bottom: auto;
+      transform: translatey(-50%);
+      transition: 2s;
+      opacity: 0;
+    }
+
+    [data-balloon-visible][data-balloon-pos="bottom"]::before,
+    [data-balloon-visible][data-balloon-pos="bottom"]::after {
+      opacity: 1;
+      transform: translatex(-50%) translatey(10px);
+    }
+
+    [data-balloon-visible][data-balloon-pos="left"]::before,
+    [data-balloon-visible][data-balloon-pos="left"]::after {
+      opacity: 1;
+      transform: translatey(-50%) translatex(-10px);
+    }
+
+
+
+    [aria-label]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-top-color: black;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translatex(-50%) translatey(-7px);
+      opacity: 0;
+      transition: 2s;
+    }
+
+    [data-balloon-pos="right"]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-right-color: black;
+      position: absolute;
+      left: auto;
+      right: 0;
+      top: 50%;
+      transform: translatey(-50%);
+      opacity: 0;
+      transition: 2s;
+    }
+
+    [data-balloon-pos="bottom"]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-bottom-color: black;
+      position: absolute;
+      left: 50%;
+      right: auto;
+      bottom: 0;
+      transform: translatex(-50%);
+      opacity: 0;
+      transition: 2s;
+    }
+
+    [data-balloon-pos="left"]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-left-color: black;
+      position: absolute;
+      left: 0;
+      right: auto;
+      bottom: auto;
+      top: 50%;
+      transform: translatey(-50%);
+      opacity: 0;
+      transition: 2s;
+    }
+
+    [aria-label]:hover::after,
+    button:hover::before {
+      transform: translatex(-50%) translatey(-13px);
+      opacity: 1;
+    }
+
+    [data-balloon-pos="right"]:hover::after,
+    [data-balloon-pos="right"]:hover::before {
+      transform: translatey(-50%) translatex(13px);
+      opacity: 1;
+    }
+
+    [data-balloon-pos="bottom"]:hover::after,
+    [data-balloon-pos="bottom"]:hover::before {
+      transform: translatex(-50%) translatey(14px);
+      opacity: 1;
+    }
+
+    [data-balloon-pos="left"]:hover::after,
+    [data-balloon-pos="left"]:hover::before {
+      transform: translatey(-50%) translatex(-14px);
+      opacity: 1;
+    }
+
+    [data-balloon-blunt]::after,
+    [data-balloon-blunt]::before {
+      transition: none;
+    }
+
+    [data-balloon-lenght="small"]::before {
+      width: 30px;
+    }
+
+    [data-balloon-lenght="medium"]::before {
+      width: 50px;
+    }
+
+    [data-balloon-lenght="large"]::before {
+      width: 70px;
+    }
+
+    [data-balloon-lenght="xlarge"]::before {
+      width: 100px;
+    }
+
+    [data-balloon-lenght="fit"]::before {
+      width: calc(100%-20px);
+    }
+  </style>
+</head>
+
+<body>
+  <button aria-label="hello" data-balloon-lenght="xlarge">hello world</button>
+  <button aria-label="hello" data-balloon-pos="up" data-balloon-blunt>hello world</button>
+  <button aria-label="hello" data-balloon-pos="right">hello world</button>
+  <button aria-label="hello" data-balloon-pos="bottom">hello world</button>
+  <button aria-label="hello" data-balloon-pos="left" data-balloon-visible>hello world</button>
+</body>
+
+</html>

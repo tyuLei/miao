@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes round {
+      from {
+        transform: rotatex(0deg) rotatey(0deg);
+      }
+
+      to {
+        transform: rotatex(360deg) rotatey(720deg);
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 100px;
+      margin-left: 100px;
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotatex(45deg) rotatey(45deg);
+      animation: round 4s infinite reverse;
+      animation-timing-function: cubic-bezier(0, 0, 1, 1);
+    }
+
+    ul:hover {
+      animation-play-state: paused;
+    }
+
+    li {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transition: 1s;
+
+    }
+
+    li:nth-child(1) {
+      transform: translatez(100px);
+      background: red;
+      opacity: 0.5;
+    }
+
+    li:nth-child(2) {
+      transform: translatez(-100px);
+      background: green;
+      opacity: 0.5;
+    }
+
+    li:nth-child(3) {
+      transform: rotatex(90deg) translatez(100px);
+      background: blueviolet;
+      opacity: 0.5;
+    }
+
+    li:nth-child(4) {
+      transform: rotatex(90deg) translatez(-100px);
+      background: burlywood;
+      opacity: 0.5;
+    }
+
+    li:nth-child(5) {
+      transform: rotatey(90deg) translatez(100px);
+      background: violet;
+      opacity: 0.5;
+    }
+
+    li:nth-child(6) {
+      transform: rotatey(90deg) translatez(-100px);
+      background: wheat;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+</body>
+
+</html>
