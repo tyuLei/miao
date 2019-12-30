@@ -30,16 +30,17 @@
       bottom: 100%;
       left: 50%;
       transform: translatex(-50%) translatey(-7px);
-      transition: 2s;
+      transition: .6s;
       opacity: 0;
+      white-space: nowrap;
     }
 
     [data-balloon-pos="right"]::before {
       left: 100%;
       top: 50%;
       bottom: auto;
-      transform: translatey(-50%);
-      transition: 2s;
+      transform: translatey(-50%) translatex(7px);
+      transition: .6s;
       opacity: 0;
     }
 
@@ -47,8 +48,8 @@
       left: 50%;
       top: 100%;
       bottom: auto;
-      transform: translatex(-50%);
-      transition: 2s;
+      transform: translatex(-50%) translatey(7px);
+      transition: .6s;
       opacity: 0;
     }
 
@@ -57,10 +58,64 @@
       right: 100%;
       top: 50%;
       bottom: auto;
-      transform: translatey(-50%);
-      transition: 2s;
+      transform: translatey(-50%) translate(-7px);
+      transition: .6s;
       opacity: 0;
     }
+
+
+    [aria-label]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-top-color: black;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translatex(-50%) translatey(-7px);
+      opacity: 0;
+      transition: .6s;
+    }
+
+    [data-balloon-pos="right"]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-right-color: black;
+      position: absolute;
+      left: auto;
+      right: 0;
+      top: 50%;
+      transform: translatey(-50%) translate(7px);
+      opacity: 0;
+      transition: .6s;
+    }
+
+    [data-balloon-pos="bottom"]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-bottom-color: black;
+      position: absolute;
+      left: 50%;
+      right: auto;
+      bottom: 0;
+      transform: translatex(-50%) translatey(7px);
+      opacity: 0;
+      transition: .6s;
+    }
+
+    [data-balloon-pos="left"]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-left-color: black;
+      position: absolute;
+      left: 0;
+      right: auto;
+      bottom: auto;
+      top: 50%;
+      transform: translatey(-50%) translate(-7px);
+      opacity: 0;
+      transition: .6s;
+    }
+
 
     [data-balloon-visible][data-balloon-pos="bottom"]::before,
     [data-balloon-visible][data-balloon-pos="bottom"]::after {
@@ -74,59 +129,12 @@
       transform: translatey(-50%) translatex(-10px);
     }
 
-
-
-    [aria-label]::after {
-      content: "";
-      border: 6px solid transparent;
-      border-top-color: black;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translatex(-50%) translatey(-7px);
-      opacity: 0;
-      transition: 2s;
+    [data-balloon-visible][data-balloon-pos="right"]::before,
+    [data-balloon-visible][data-balloon-pos="right"]::after {
+      opacity: 1;
+      transform: translatey(-50%) translatex(14px);
     }
 
-    [data-balloon-pos="right"]::after {
-      content: "";
-      border: 6px solid transparent;
-      border-right-color: black;
-      position: absolute;
-      left: auto;
-      right: 0;
-      top: 50%;
-      transform: translatey(-50%);
-      opacity: 0;
-      transition: 2s;
-    }
-
-    [data-balloon-pos="bottom"]::after {
-      content: "";
-      border: 6px solid transparent;
-      border-bottom-color: black;
-      position: absolute;
-      left: 50%;
-      right: auto;
-      bottom: 0;
-      transform: translatex(-50%);
-      opacity: 0;
-      transition: 2s;
-    }
-
-    [data-balloon-pos="left"]::after {
-      content: "";
-      border: 6px solid transparent;
-      border-left-color: black;
-      position: absolute;
-      left: 0;
-      right: auto;
-      bottom: auto;
-      top: 50%;
-      transform: translatey(-50%);
-      opacity: 0;
-      transition: 2s;
-    }
 
     [aria-label]:hover::after,
     button:hover::before {
@@ -136,7 +144,7 @@
 
     [data-balloon-pos="right"]:hover::after,
     [data-balloon-pos="right"]:hover::before {
-      transform: translatey(-50%) translatex(13px);
+      transform: translatey(-50%) translatex(14px);
       opacity: 1;
     }
 
@@ -184,7 +192,7 @@
   <button aria-label="hello" data-balloon-pos="up" data-balloon-blunt>hello world</button>
   <button aria-label="hello" data-balloon-pos="right">hello world</button>
   <button aria-label="hello" data-balloon-pos="bottom">hello world</button>
-  <button aria-label="hello" data-balloon-pos="left" data-balloon-visible>hello world</button>
+  <button aria-label="hello" data-balloon-pos="up" data-balloon-visible>hello world</button>
 </body>
 
 </html>
