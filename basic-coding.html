@@ -164,9 +164,9 @@
 <script id="ch0104/04" type="sss">
   var n = prompt().charCodeAt()
   if (n % 2 != 0) {
-    console.log(' Yes');
+    console.log(' YES');
   } else {
-    console.log('No');
+    console.log('NO');
   }
 </script>
 
@@ -204,9 +204,9 @@
 <script id="ch0104/08" type="sss">
   var n = prompt()
   if (n % 15 == 0) {
-    console.log(' Yes');
+    console.log(' YES');
   } else {
-    console.log('No');
+    console.log('NO');
   }
 </script>
 
@@ -239,9 +239,12 @@
 <script id="ch0104/10" type="sss">
   var x = prompt()
   var y = prompt()
-  if (x < 60 || y < 60) {
-    console.log(' 1');
-  } else {
+  if (x < 60 && y > 60) {
+    console.log('1');
+  } else if ( x > 60 && y < 60){
+    console.log('1');
+  }
+  else {
     console.log('0');
   }
 </script>
@@ -257,9 +260,9 @@
 
 <script id="ch0104/12" type="sss">
   var x = prompt()
-  if (x > 60) {
+  if (x > 100) {
     console.log(' Bike');
-  } else if(x == 60){
+  } else if(x == 100){
     console.log('All');
   }
      else {
@@ -321,18 +324,18 @@
   var b = +prompt()
   var c = +prompt()
   if ( a+b>c && a+c>b && b+c>a) {
-    console.log('YES');
+    console.log('yes');
   } else {
-    console.log('NO');
+    console.log('no');
   }
 </script>
 
 <script id="ch0104/17" type="sss">
   var a = +prompt()
   if ( a % 4 == 0 && a % 100 != 0 || a % 400 == 0) {
-    console.log('YES');
+    console.log('Y');
   } else {
-    console.log('NO');
+    console.log('N');
   }
 </script>
 
