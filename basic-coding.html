@@ -9,7 +9,10 @@
 </script>
 
 <script id="ch0103/03" type="sss">
-  console.log((Number(prompt()) + Number(prompt())) / Number(prompt()))
+  var a = +prompt()
+  var b = +prompt()
+  var c = +prompt()
+  console.log((a + b)/ c)
 </script>
 
 <script id="ch0103/04" type="sss">
@@ -27,7 +30,7 @@
 <script id="ch0103/06" type="sss">
   var a = prompt()
   var b = prompt()
-  console.log((b / a).toFixed(3)*100 + "%")
+  console.log((b / a).toFixed(5)*100 + "%")
 </script>
 
 <script id="ch0103/07" type="sss">
@@ -36,18 +39,18 @@
   var b = prompt()
   var c = prompt()
   var d = prompt()
-  console.log(Number((a*Math.pow(x,3) + b*Math.pow(x , 2) + c*x + d)).toFixed(1))
+  console.log(Number((a*Math.pow(x,3) + b*Math.pow(x , 2) + c*x + d)).toFixed(7))
 </script>
 
 <script id="ch0103/08" type="sss">
   var f = prompt()
-  console.log((5*(f-32)/9).toFixed(7))
+  console.log((5*(f-32)/9).toFixed(5))
 </script>
 
 <script id="ch0103/09" type="sss">
   var r = prompt()
   var a, b , c
-  a = 2*r
+  a = (2*r).toFixed(4)
   b = (2*r*Math.PI).toFixed(4)
   c = (Math.pow(r , 2)*Math.PI).toFixed(4)
   console.log(a , b ,c)
@@ -79,9 +82,9 @@
 </script>
 
 <script id="ch0103/14" type="sss">
-  var h = prompt()
-  var r = prompt()
-  console.log(Math.round((Math.PI*Math.pow(r,2)*h)/20))
+  var h = +prompt()
+  var r = +prompt()
+  console.log(Math.ceil(20/(Math.PI * r * r * h/1000)))
 </script>
 
 <script id="ch0103/15" type="sss">
@@ -96,7 +99,7 @@
   var y1 = prompt()
   var x2 = prompt()
   var y2 = prompt()
-  console.log(Math.sqrt(Math.pow((x2-x1),2) + Math.pow((y2-y1),2)))
+  console.log(Math.sqrt(Math.pow((x2-x1),2) + Math.pow((y2-y1),2)).toFixed(3))
 </script>
 
 <script id="ch0103/17" type="sss">
@@ -125,7 +128,7 @@
 
 <script id="ch0103/20" type="sss">
   var a = +prompt()
-  console.log(Math.pow(a , 3))
+  console.log(Math.pow(2 , a))
 </script>
 
 <script id="ch0104/01" type="sss">
@@ -368,7 +371,7 @@
   }
 </script>
 
-<script id="ch0104/21" type="">
+<script id="ch0104/21" type="sss">
   var n = +prompt()
   var x = +prompt()
   var y = +prompt()
