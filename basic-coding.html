@@ -1073,7 +1073,7 @@ console.log(count)
   console.log(i)
 </script>
 
-<script id="ch0105/45" type="">
+<script id="ch0105/45" type="sss">
   var n = +prompt()
   var sn = 0
   var t = 0
@@ -1092,3 +1092,116 @@ console.log(count)
   }
 
 </script>
+
+<script id="7" type="sss">
+ var n = +prompt()
+ if (n % 7 == 0) {
+   console.log('YES')
+ } else {
+   while (n > 0) {
+     var t = n % 10
+     if (t == 7){
+       console.log('YES')
+       break
+     }
+     n = (n - t) / 10
+   }
+   console.log('NO')
+ }
+</script>
+
+<script id="sort" type="sss">
+  var a = +prompt()
+  var b = +prompt()
+  var c = +prompt()
+    if (a > b || a > c){
+      if (b > c) {
+        console.log(a , b , c)
+      } else {
+        console.log(a , c , b)
+      }
+    } else if (b > c) {
+        if (c > a) {
+        console.log(b , c , a)
+      } else {
+        console.log(b , a ,c)
+      }
+    } else if (c > b){
+      if (b > a) {
+        console.log(c , b , a)
+      } else {
+        console.log(c , a , b)
+      }
+    }
+</script>
+
+<script id="narcissistic" type="sss">
+  var n = +prompt()
+    var t = n
+    var count = 0
+    while (t > 0) {
+      var r = t % 10
+      t = (t - r) / 10
+      count++
+    }
+
+    var d = n
+    var sn = 0
+    while (d > 0){
+      var m = d % 10
+      var s = 1
+      for (var j = 0 ; j < count ; j++) {
+        s *= m
+      }
+      d = (d - m) / 10
+      sn += s
+    }
+    if (sn == n) {
+      console.log('YES')
+    } else {
+      console.log('NO')
+    }
+
+</script>
+
+<script id="narcissistics" type="sss">
+  debugger
+  for (var i = 1; i <= 1000 ; i++){
+    var t = i
+    var count = 0
+    while (t > 0) {
+      var r = t % 10
+      t = (t - r) / 10
+      count++
+    }
+
+    var d = i
+    var sn = 0
+    while (d > 0){
+      var m = d % 10
+      var s = 1
+      for (var j = 0 ; j < count ; j++) {
+        s *= m
+      }
+      d = (d - m) / 10
+      sn += s
+    }
+
+    if (sn == i) {
+      console.log(sn)
+    }
+  }
+</script>
+<script id="complete-number" type="">
+
+</script>
+<script id="ch0105/45" type="sss"></script>
+
+var prower = function(a,n) {
+var b = 1
+for (var i = 1 ; i < n ; i++) { b *=a } return b } var isNarcissistic=function() { var do { var digit=t % 10 sum
+  +=power(digit , w) t=(t - digit) / 10 } while (t> 0)
+  }
+
+  var isPrime = function(n){
+  for (var i = 2 ; i <= n ; i++){ if (n % i==0) { return false } } return true }
