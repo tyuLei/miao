@@ -1,0 +1,102 @@
+<script> //递归求解最大字符串长度
+  function maxSubarray(ary) {
+    if (ary.length == 0) {
+      return 0
+    }
+    if (ary.length == 1) { //边缘条件，当数组长度为1时，如果a[0]大于0则返回a[0]，如果a[0]小于0则输出0
+      if (ary[0] > 0) {
+        return ary[0]
+      } else {
+        return 0
+      }
+    }
+
+    var mid = ary.length >> 1
+    var left = ary.slice(0, mid)
+    var right = ary.slice(mid)
+
+    var leftMax = maxSubarray(left)
+    var rightMax = maxSubarray(right)
+
+    var midRightmax = 0
+    var sum = 0
+    for (var i = mid; i < ary.length; i++) {
+      sum += ary[i]
+      if (sum > midRightmax) {
+        midRightmax = sum
+      }
+    }
+
+    var midLeftmax = 0
+    var sum = 0
+    for (var i = mid - 1; i >= 0; i--) {
+      sum += ary[i]
+      if (sum > midLeftmax) {
+        midLeftmax = sum
+      }
+    }
+
+    return Math.max(leftMax, rightMax, midLeftmax + midRightmax)
+  }
+</script>
+
+<script> //递归求解最大字符串长度,算法空间优化
+  function maxSubarray(ary, start, end) {
+    if (end - start == 0) {
+      return 0
+    }
+    if (end - start == 1) { //边缘条件，当数组长度为1时，如果a[0]大于0则返回a[0]，如果a[0]小于0则输出0
+      if (end - start == 0) {
+        return ary[0]
+      } else {
+        return 0
+      }
+    }
+    if (arguments.length == 1) {
+      start = 0
+      end = ary.length - 1
+    }
+
+    var mid = (start + end) >> 1
+
+    var leftMax = maxSubarray(ary, start, mid)
+    var rightMax = maxSubarray(ary, mid, end)
+
+    var midRightmax = 0
+    var sumRight = 0
+    for (var i = mid; i < end; i++) {
+      sumRight += ary[i]
+      if (sumRight > midRightmax) {
+        midRightmax = sumRight
+      }
+    }
+
+    var midLeftmax = 0
+    var sumLeft = 0
+    for (var i = mid - 1; i >= start; i--) {
+      sumLeft += ary[i]
+      if (sumLeft > midLeftmax) {
+        midLeftmax = sumLeft
+      }
+    }
+
+    return Math.max(leftMax, rightMax, midLeftmax + midRightmax)
+  }
+</script>
+
+<script>  //最佳算法
+  function maxSubarray(ary) {
+    var sum = 0
+    var max = 0
+    for (var i = 0; i < ary.length; i++) {
+      if (sum < 0) {
+        sum = 0
+      }
+      sum += ary[i]
+      if (sum > max) {
+        max = sum
+      }
+    }
+    return max
+  }
+</script>

@@ -9,7 +9,7 @@
 </head>
 <style>
   * {
-    background-color: rgba(0, 0, 0, 0.1);
+    xbackground-color: rgba(0, 0, 0, 0.1);
     margin: 0;
   }
 
@@ -136,6 +136,8 @@
     }
   }
 
+  @media (max-width: 640px) {}
+
   .mobike-bg {
     width: 100%;
     overflow: hidden;
@@ -171,6 +173,357 @@
     margin-top: 22px;
     background: rgba(0, 0, 0, .6);
     color: #fff;
+  }
+
+  .four-section {
+    display: flex;
+    height: 260px;
+  }
+
+  @media (min-width : 1080px) {
+    .four-section div {
+      box-sizing: border-box;
+      border-top: 2px solid #fff;
+      border-right: 1px solid #fff;
+      border-left: 1px solid #fff;
+      flex-grow: 1;
+      padding: 2.4vw;
+      text-align: center;
+      color: #fff;
+    }
+
+    .four-section div:nth-child(1) {
+      border-left: 0px;
+      background-image: url(promo-01.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(2) {
+      background-image: url(promo-02.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(3) {
+      background-image: url(promo-03.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(4) {
+      border-right: 0px;
+      background-image: url(promo-04.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  @media (max-width : 1080px) {
+    .four-section {
+      display: flex;
+      height: 520px;
+      flex-wrap: wrap;
+    }
+
+    .four-section div {
+      box-sizing: border-box;
+      border-top: 2px solid #fff;
+      border-right: 1px solid #fff;
+      border-left: 1px solid #fff;
+      flex-grow: 1;
+      width: 50%;
+      padding: 2.4vw;
+      text-align: center;
+      color: #fff;
+    }
+
+    .four-section div:nth-child(1) {
+      border-left: 0px;
+      background-image: url(promo-01.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(2) {
+      border-right: 0px;
+      background-image: url(promo-02.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(3) {
+      border-left: 0px;
+      background-image: url(promo-03.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(4) {
+      border-right: 0px;
+      background-image: url(promo-04.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  @media (max-width : 640px) {
+    .four-section {
+      display: flex;
+      height: 1040px;
+    }
+
+    .four-section div {
+      box-sizing: border-box;
+      border-top: 2px solid #fff;
+      border-right: 1px solid #fff;
+      border-left: 1px solid #fff;
+      flex-grow: 1;
+      width: 100%;
+      padding: 2.4vw;
+      text-align: center;
+      color: #fff;
+    }
+
+    .four-section div:nth-child(1) {
+      border-left: 0px;
+      border-right: 0px;
+      background-image: url(promo-01.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(2) {
+      border-right: 0px;
+      border-left: 0px;
+      background-image: url(promo-02.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(3) {
+      border-left: 0px;
+      border-right: 0px;
+      background-image: url(promo-03.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .four-section div:nth-child(4) {
+      border-right: 0px;
+      border-left: 0px;
+      background-image: url(promo-04.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  .four-section div p {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+
+  @media (min-width : 640px) {
+    .three-items {
+      margin: 0 auto;
+      max-width: 1040px;
+      box-sizing: border-box;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .three-items>div {
+      flex-grow: 1;
+      height: 50px;
+      padding: 45px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .three-bg {
+      background-image: url(download-2.png);
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .two-bg {
+      background-image: url(download-1.png);
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .one-bg {
+      background-image: url(download.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .three-items h4 {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.42857143;
+    }
+
+    .three-items p {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.42857143;
+    }
+  }
+
+  @media (max-width : 640px) {
+    .three-items {
+      margin: 0 auto;
+      max-width: 1040px;
+      box-sizing: border-box;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .three-items>div {
+
+      height: 50px;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .three-bg {
+      background-image: url(download-2.png);
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .two-bg {
+      background-image: url(download-1.png);
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .one-bg {
+      background-image: url(download.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .three-items h4 {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.42857143;
+    }
+
+    .three-items p {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.42857143;
+    }
+  }
+
+  .three-items-wrap {
+    border-bottom: 1px solid #eee;
+  }
+
+  .footer {
+    margin: 0 auto;
+    max-width: 1040px;
+    padding: 45px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .footer-left {
+    margin-right: 40px;
+    margin-bottom: 10px;
+  }
+
+  .logo-text-bg {
+    width: 160px;
+    height: 36px;
+    background-image: url(logo-text.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top 0 center;
+    margin-bottom: 10px;
+  }
+
+  .footer-left p {
+    line-height: 2.3;
+    font-size: 16px;
+    font-weight: 300;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .footer-right {
+    width: 420px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-right li ul li:nth-child(1) {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .footer-right li ul li {
+    line-height: 1.4285;
+    font-weight: 300;
+  }
+
+  .footer-container {
+    border-bottom: 1px solid #eee;
+  }
+
+  .footer-bottom {
+    max-width: 1040px;
+    margin: 45px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: #aaa;
+    line-height: 2.3;
+    font-weight: 300;
+    vertical-align: center;
+  }
+
+  .footer-bottom-right {
+    background-image: url(footer-chengxin.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+
   }
 </style>
 
@@ -256,68 +609,102 @@
       </div>
     </div>
   </div>
+
   <div class="four-section">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div>
+      <p>大国品牌</p>
+    </div>
+    <div>
+      <p>摩拜科技</p>
+    </div>
+    <div>
+      <p>摩拜生活</p>
+    </div>
+    <div>
+      <p>摩拜校招</p>
+    </div>
   </div>
 
-  <div class="three-title">
-    <div>
-      <span>微信小程序</span>
-      <span>微信扫一扫</span>
+  <div class="three-items-wrap">
+    <div class="three-items">
+      <div class="one-title">
+        <div class="one-bg"></div>
+        <div class="one-caption">
+          <h4>微信小程序</h4>
+          <p>微信扫一扫,直接用车</p>
+        </div>
+      </div>
+      <div class="two-title">
+        <div class="two-bg"></div>
+        <div class="two-caption">
+          <h4>红包车</h4>
+          <p>骑摩拜，能赚钱</p>
+        </div>
+      </div>
+      <div class="three-title">
+        <div class="three-bg"></div>
+        <div class="three-caption">
+          <h4>摩范分</h4>
+          <p>文明骑行，信用生活</p>
+        </div>
+      </div>
     </div>
-    <div>
-      <span>红包车</span>
-      <span>骑摩拜，能赚钱</span>
-    </div>
-    <div>
-      <span>摩范分</span>
-      <span>文明骑行，信用生活</span>
-    </div>
-  </div class="footer">
-  <div class="footer-left">
-    <img src="" alt="">
-    <p>Beijing Mobike Technology Co., Ltd</p>
-    <p>客服电话 400-618-7799</p>
-    <p>北京摩拜科技有限公司</p>
-
   </div>
-  <ul class="footer-right">
-    <li>
-      <ul>
-        <li>产品</li>
-        <li>经典版</li>
-        <li>轻骑</li>
-        <li>智能锁</li>
-      </ul>
-    </li>
-    <ul>
-      <li>生活</li>
-      <li>城市</li>
-    </ul>
-    <li>
-      <ul>
-        <li>关于</li>
-        <li>关于 Mobike</li>
-        <li>加入我们</li>
-        <li>联系我们</li>
-        <li>服务协议</li>
-      </ul>
-    </li>
-    <li>
-      <ul>
-        <li>社交网络</li>
-        <li>微博</li>
-        <li>微信</li>
-        <li>知乎专栏</li>
-        <li>Faceboo</li>
-      </ul>
-    </li>
-  </ul>
 
-  <div>
+  <div class="footer-container">
+    <div class="footer">
+      <div class="footer-left">
+        <div class="logo-text-bg"></div>
+        <p>Beijing Mobike Technology Co., Ltd</p>
+        <p>客服电话 400-618-7799</p>
+        <p>北京摩拜科技有限公司</p>
+      </div>
+
+      <ul class="footer-right">
+        <li>
+          <ul>
+            <li>产品</li>
+            <li>经典版</li>
+            <li>轻骑</li>
+            <li>智能锁</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>生活</li>
+            <li>城市</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>关于</li>
+            <li>关于 Mobike</li>
+            <li>加入我们</li>
+            <li>联系我们</li>
+            <li>服务协议</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>社交网络</li>
+            <li>微博</li>
+            <li>微信</li>
+            <li>知乎专栏</li>
+            <li>Faceboo</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+
+      <p>京 ICP 备15053449 号 <img src="beian-icon.png" alt="" width="15px" height="15px"> 京公网安备 11010502032956 号</p>
+      <p>增值电信业务经营许可证编号：京B2-20170053</p>
+    </div>
+    <div class="footer-bottom-right">
+    </div>
 
   </div>
 </body>
