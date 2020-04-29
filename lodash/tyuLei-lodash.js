@@ -1,4 +1,4 @@
-var tyuLei = {
+var tyulei = {
   isNull: function (val) {
     if (val === null) {
       return true
