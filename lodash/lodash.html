@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  var tyulei = {
+    isNull: function (val) {
+      if (val === null) {
+        return true
+      } else {
+        return false
+      }
+    },
+    isNaN: function (val) {
+      if (val !== val) {
+        return true
+      } else {
+        return false
+      }
+    },
+    chunk: function (ary, size = 1) {
+      if (size <= 1) {
+        return ary
+      }
+      var aryNew = []
+      var count = 0
+      var number = 0
+      for (var j = 0; j < size; j++) {
+        aryNew[j] = []
+      }
+
+      for (var i = 0; i < ary.length; i++) {
+
+        aryNew[number].push(ary[i])
+        count++
+        if (count == Math.ceil(ary.length / size)) {
+          number++
+        }
+      }
+      return aryNew
+    },
+    difference: function (ary1, ary2) {
+      for (let i = 0; i < ary1.length; i++) {
+        for (let j = 0; j < ary2.length; j++) {
+          if (ary1[i] == ary[j]) {
+            ary1.splice(i, 1)
+          }
+        }
+      }
+      return ary1
+    },
+    drop: function (ary, n = 1) {
+      let aryNew = []
+      for (let i = n; i < ary.length; i++) {
+        aryNew.push(ary[i])
+      }
+      return aryNew
+    },
+    indexOf: function (ary, value, fromindex = 0) {
+      if (fromindex < 0) {
+        fromindex = ary.length + fromindex
+      }
+      for (let i = fromindex; i < ary.length; i++) {
+        if (ary[i] == value) {
+          return i
+        }
+      }
+      return -1
+    },
+    initial: function (ary) {
+      let aryNew = []
+      for (let i = 0; i < ary.length - 1; i++) {
+        aryNew.push(ary[i])
+      }
+      return aryNew
+    },
+    intersection: function (...ary) {
+      let aryNew = []
+      let count = 0
+      let obj = {}
+      for (let i = 0; i < arguments.length; i++) {
+        for (let j = 0; j < arguments[j].length; j++) {
+          aryNew.push(arguments[i][j])
+        }
+        for (let i = 0; i < aryNew.length; i++) {
+          if (aryNew[i]) {
+
+          }
+        }
+
+      }
+
+    },
+
+
+    lastIndexOf: function (ary, value, fromIndex = ary.length - 1) {
+      for (let i = fromIndex; i >= 0; i--) {
+        if (ary[i] == value) {
+          return i
+        }
+      }
+      return -1
+    },
+    pull: function (ary) {
+      let obj = {}
+      let aryNew = []
+
+      for (let i = 1; i < arguments.length - 1; i++) {
+        obj[ary[i]] = i
+      }
+      for (let i = 0; i < ary.length - 1; i++) {
+        let flog = true
+        if (ary[i] in obj) {
+          flog = false
+        }
+        if (flog) {
+          aryNew.push(ary[i])
+        }
+      }
+      return aryNew
+    },
+    pullAll: function (ary1, ary2) {
+      let obj = {}
+      let aryNew = []
+
+      for (let i = 1; i < ary2.length - 1; i++) {
+        obj[ary1[i]] = i
+      }
+      for (let i = 0; i < ary1.length - 1; i++) {
+        let flog = true
+        if (ary1[i] in obj) {
+          flog = false
+        }
+        if (flog) {
+          aryNew.push(ary1[i])
+        }
+      }
+      return aryNew
+    },
+    pullAt: function (ary) {
+      let aryNew = []
+      for (let i = 0; i < ary.length; i++) {
+        for (let j = 1; j < arguments.length; j++) {
+          if (i == arguments[j]) {
+            aryNew.push(ary[i])
+          }
+        }
+      }
+      tyulei.pullAll(ary, aryNew)
+
+      return aryNew
+    }
+  }
+</script>
+
+<body>
+
+</body>
+
+</html>
