@@ -208,5 +208,262 @@ var tyulei = {
       aryNew.push(ary[i])
     }
     return aryNew
-  }
+  },
+  slice: function (ary, start = 0, lastIndex = ary.length) {
+    let aryNew = []
+    for (let i = start; i < lastIndex; i++) {
+      aryNew.push(ary[i])
+    }
+    return aryNew
+  },
+  sortIndex: function (ary, value) {
+    for (let i = 0; i < ary.length; i++) {
+      if (ary[i] > value) {
+        return i
+      }
+    }
+  },
+  sortIndexOf: function (ary, value) {
+    for (let i = 0; i < ary.length; i++) {
+      if (ary[i] == value && ary[i + 1] !== value) {
+        return i
+      }
+    }
+    return -1
+  },
+  tail: function (ary) {
+    let aryNew = []
+    for (let i = 1; i < ary.length; i++) {
+      aryNew.push(ary[i])
+    }
+    return aryNew
+  },
+  take: function (ary, number = 1) {
+    let aryNew = []
+    for (let i = 0; i < number; i++) {
+      aryNew.push(ary[i])
+    }
+    return aryNew
+  },
+  takeRight: function (ary, number = 1) {
+    let aryNew = []
+    for (let i = ary.length - 1; i > ary.length - 1 - number; i--) {
+      aryNew.push(ary[i])
+    }
+    return aryNew
+  },
+  nuiq: function (ary) {
+    let obj = {}
+    let aryNew = []
+    for (let i = 0; i < ary.length; i++) {
+      if (obj[ary[i]] == undefined) {
+        aryNew.push(ary[i])
+        obj[ary[i]] = i
+      }
+    }
+    return aryNew
+  },
+  /**
+   * 将二维数组按新的方式分配，将二维数组里，所有的第一项分为一类，所有的第二项分为一类
+   * @param {Array} ary 输入一个二维数组
+   * @returns {Array}  返回一个重新分配过的二维数组
+   */
+  unzip: function (ary) {
+    let aryNew = []
+    let length = []
+    //找出输入二维数组中的最长数组
+    for (let i = 0; i < ary.length; i++) {
+      length.push(ary[i].length)
+    }
+    //创建一个新的空的二维数组
+    for (let i = 0; i < Math.max(...length); i++) {
+      aryNew.push([])
+    }
+    //把原来的二维数组里的值按顺序装到新的数组
+    for (let i = 0; i < aryNew.length; i++) {
+      for (let j = 0; j < ary.length; j++) {
+        aryNew[i].push(ary[j][i])
+      }
+    }
+    return aryNew
+  },
+  without: function (ary, values) {
+    let aryNew = []
+    for (let i = 0; i < ary.length; i++) {
+      if (arguments.indexOf(ary[i]) == -1) {
+        aryNew.push(ary[i])
+      }
+    }
+    return aryNew
+  },
+  /**
+   * 传入多个数组，去除里面重复的元素，返回一个去重后的数组
+   * @param {arrays} 传入多个数组
+   * @return {array}  返回一个去重后的数组
+   */
+  xor: function (arys) {
+    let obj = {}
+    let aryNew = []
+    for (let i = 0; i < arguments.length; i++) {
+      for (let j = 0; j < arguments[i].length; j++) {
+        if (obj[arguments[i][j]] == undefined) {
+          aryNew.push(arguments[i][j])
+        }
+        obj[arguments[i][j]] = i
+      }
+    }
+    return aryNew
+  },
+  /**
+   * 输入两个数组，将他们转换成对象，第一数组里的值为属性，第二个数组里的为属性值
+   * @param {arrays} 输入两个数组
+   * @returns {object} 输出一个对象
+   */
+  zipObject: function (ary1, ary2) {
+    let obj = {}
+    let len = Math.max(ary1.length.ary2.length)
+    for (let i = 0; i < len.length; i++) {
+      obj[ary1[i]] = ary2[i]
+    }
+    return obj
+  },
+  /**
+   * 从集合中获取一个随机元素
+   */
+  smaple: function (collection) {
+
+  },
+  eq: function (value1, value2) {
+    if (value1 !== value1 && value2 !== value2) {
+      return true
+    }
+    if (value1 == value2) {
+      return true
+    }
+    return false
+  },
+  gt: function (value, other) {
+    if (value > other) {
+      return true
+    }
+    return false
+  },
+  gte: function (value, other) {
+    if (value >= other) {
+      return true
+    }
+    return false
+  },
+  lt: function (value, other) {
+    if (value < other) {
+      return true
+    }
+    return false
+  },
+  lte: function (value, other) {
+    if (value <= other) {
+      return true
+    }
+    return false
+  },
+  add: function (number1, number2) {
+    return number1 + number2
+  },
+  ceil: function (number, precision) {
+
+  },
+  dividend: function (number1, number2) {
+    return number1 / number2
+  },
+  max: function (ary) {
+    if (ary.length = 0) {
+      return []
+    }
+    let max = -Infinity
+    for (let i = 0; i < ary.length; i++) {
+      if (ary[i] > max) {
+        max = ary[i]
+      }
+    }
+    return max
+  },
+  mean: function (ary) {
+    if (ary.length = []) {
+      return []
+    }
+    let sum = 0
+    for (let i = 0; i < ary.length; i++) {
+      sum = + ary[i]
+    }
+    return sum / ary.length
+  },
+  min: function (ary) {
+    if (ary.length = 0) {
+      return []
+    }
+    let min = Infinity
+    for (let i = 0; i < ary.length; i++) {
+      if (ary[i] < min) {
+        min = ary[i]
+      }
+    }
+    return min
+  },
+  multiply: function (number1, number2) {
+    return number1 * number2
+  },
+  subtract: function (number1, number2) {
+    return number1 - number2
+  },
+  sum: function (ary) {
+    let sum = 0
+    for (let i = 0; i < ary.length; i++) {
+      sum += ary[i]
+    }
+    return sum
+  },
+  defaults: function (obj) {
+    let objNew = {}
+    for (let i = 0; i < arguments.length; i++) {
+      for (var prop in arguments[i]) {
+        if (objNew[prop] == undefined) {
+          objNew[prop] = arguments[i][prop]
+        }
+      }
+    }
+    return objNew
+  },
+  hasIn: function (obj, path) {
+    if (obj[path] == undefined) {
+      return false
+    }
+    return true
+  },
+  invert: function (obj) {
+    let objNew = {}
+    for (var prop in obj) {
+      objNew[obj[prop]] = prop
+    }
+    return objNew
+  },
+  omit: function (obj, props) {
+    let objNew = {}
+    for (let i = 0; i < props.length; i++) {
+      for (let prop in obj) {
+        if (prop !== props[i]) {
+          objNew[prop] = obj[prop]
+        }
+      }
+    }
+    return objNew
+  },
+
+
+
+
+
+
+
+
+
 }

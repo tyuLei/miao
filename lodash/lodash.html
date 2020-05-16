@@ -154,12 +154,203 @@
       tyulei.pullAll(ary, aryNew)
 
       return aryNew
+    },
+    sortIndexOf: function (ary, value) {
+      for (let i = 0; i < ary.length; i++) {
+        if (ary[i] == value && ary[i + 1] !== value) {
+          return i
+        }
+      }
+      return -1
+    },
+    takeRight: function (ary, number = 1) {
+      let aryNew = []
+      for (let i = ary.length - number; i < ary.length; i--) {
+        aryNew.push(ary[i])
+      }
+      return aryNew
+    },
+    nuiq: function (ary) {
+      let obj = {}
+      let aryNew = []
+      for (let i = 0; i < ary.length; i++) {
+        if (obj[ary[i]] == undefined) {
+          aryNew.push(ary[i])
+          obj[ary[i]] = i
+        }
+      }
+      return aryNew
+    },
+    unzip: function (ary) {
+      let aryNew = []
+      let length = []
+      //找出输入二维数组中的最长数组
+      for (let i = 0; i < ary.length; i++) {
+        length.push(ary[i].length)
+      }
+      //创建一个新的空的二维数组
+      for (let i = 0; i < Math.max(...length); i++) {
+        aryNew.push([])
+      }
+      //把原来的二维数组里的值按顺序装到新的数组
+      for (let i = 0; i < aryNew.length; i++) {
+        for (let j = 0; j < ary.length; j++) {
+          aryNew[i].push(ary[j][i])
+        }
+      }
+      return aryNew
+    },
+    without: function (ary, values) {
+      let obj = {}
+      let aryNew = []
+      for (let i = 1; i < arguments.length; i++) {
+        obj[arguments[i]] = i
+      }
+      for (let i = 0; i < ary.length; i++) {
+        if (obj[ary[i]] == undefined) {
+          aryNew.push(ary[i])
+        }
+      }
+      return aryNew
+    },
+    xor: function (arys) {
+      let obj = {}
+      let aryNew = []
+      for (let i = 0; i < arguments.length; i++) {
+        for (let j = 0; j < arguments[i].length; j++) {
+          if (obj[arguments[i][j]] == undefined) {
+            aryNew.push(arguments[i][j])
+          }
+          obj[arguments[i][j]] = i
+        }
+      }
+      return aryNew
+    },
+    defaults: function (obj) {
+      let objNew = {}
+      for (let i = 0; i < arguments.length; i++) {
+        for (var prop in arguments[i]) {
+          if (objNew[prop] == undefined) {
+            objNew[prop] = arguments[i][prop]
+          }
+        }
+      }
+      return objNew
+    },
+    omit: function (obj, props) {
+      let objNew = {}
+      for (let i = 0; i < props.length; i++) {
+        for (let prop in obj) {
+          if (prop !== props[i]) {
+            objNew[prop] = obj[prop]
+          }
+        }
+      }
+      return objNew
     }
+
+
+
   }
 </script>
 
 <body>
+  <em>
+    chunk,compact
+    concat
+    difference
+    drop
+    fill
+    find
+    first/head
+    flatten
+    indexOf
+    initial
+    intersection
+    join
+    last
+    lastIndexOf
+    nth
+    pull
+    pullAll
+    pullAt
+    remove
+    reverse
+    slice
+    sortedIndex
+    sortedIndexOf
+    tail
+    take
+    takeRight
+    union
+    uniq
+    unzip
+    without
+    xor
+    zip
+    zipObject
 
+    includes
+    sample
+    sampleSize
+    shuffle
+    size
+
+    eq,gt,gte
+    lt,lte
+    add,ceil
+    divide
+    floor
+    max
+    mean
+    min
+
+    multiply
+    round
+    substract
+    sum
+    at
+    defaults
+
+    get
+    set
+    has
+    hasIn
+    invert
+    keys
+    assign
+    omit
+    pick
+    values
+    camelCase
+    capitalize
+    deburr
+
+    endsWith
+    escape
+    kebabCase
+    lowerCase
+    lowerFirst
+    pad
+    padEnd
+    padStart
+    parseInt
+    repeat
+    replace
+    snakeCase
+    split
+    startCase
+    startsWith
+    trim
+    trimEnd
+    trimStart
+    truncate
+    unescape
+    upperCase
+    upperFirst
+    words
+    range
+  </em>
 </body>
 
 </html>
