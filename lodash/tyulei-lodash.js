@@ -7,36 +7,29 @@ var tyulei = {
     }
   },
   isNaN: function (val) {
-    if (val !== val) {
-      return true
-    } else {
-      return false
+    if (typeof val == 'object') {
+      return val.toString() == 'NaN'
     }
+    return val !== val
   },
   /**
-   * 把一个数组拆分成多个数组
-   * @param ary {Array} 需要拆分的数组
-   * @param size {Number}  拆分的大小
-   * @returns {Array[][]}
-   */
+     * 将一个数组划分为指定长度的多个数组
+     * @param {array} 输入的数组
+     * @param {size} 要切分的数组长度
+     * @returns {arrays} 返回切分后的数组，如果不能均匀切分，则多余的放到最后一项
+    */
   chunk: function (ary, size = 1) {
-    if (size <= 1) {
-      return ary
-    }
     var aryNew = []
-    var count = 0
-    var number = 0
-    for (var j = 0; j < size; j++) {
-      aryNew[j] = []
-    }
-
-    for (var i = 0; i < ary.length; i++) {
-
-      aryNew[number].push(ary[i])
-      count++
-      if (count == Math.ceil(ary.length / size)) {
-        number++
+    var num = 0
+    var flog = 0
+    aryNew[0] = []
+    aryNew[0][0] = ary[0]
+    for (let i = 1; i < ary.length; i++) {
+      if (i % size == 0) {
+        flog++
+        aryNew[flog] = []
       }
+      aryNew[flog][i % size] = ary[i]
     }
     return aryNew
   },
@@ -59,32 +52,38 @@ var tyulei = {
    * @param {Array} ary
    * @returns {Array}
    */
-  concat: function (ary) {
+  concat: function (...arys) {
     var aryNew = []
-    for (var i = 0; i < ary.length; i++) {
-      if (Array.isArray(ary)) {
-        for (var j = 0; j < ary.length; j++) {
-          aryNew.push(ary[j])
+    for (var i = 0; i < arys.length; i++) {
+      if (Array.isArray(arys[i])) {
+        for (var j = 0; j < arys[i].length; j++) {
+          aryNew.push(arys[i][j])
         }
+      } else {
+        aryNew.push(arys[i])
       }
-      aryNew.push(ary[i])
     }
     return aryNew
   },
   /**
    * 筛选出数组里不需要的数，返回一个新的数组
    * @param {Array} ary1 传入的数组
-   * @param {Array} ary2 需要筛选掉的数值
+   * @param {Arrays} ary2 需要筛选掉的数值
    */
   difference: function (ary1, ary2) {
-    for (let i = 0; i < ary1.length; i++) {
-      for (let j = 0; j < ary2.length; j++) {
-        if (ary1[i] == ary2[j]) {
-          ary1.splice(i, 1)
-        }
+    let obj = {}
+    let aryNew = []
+    for (let i = 1; i < arguments.length; i++) {
+      for (let j = 0; j < arguments[i].length; j++) {
+        obj[arguments[i][j]] = i
       }
     }
-    return ary1
+    for (let i = 0; i < ary1.length; i++) {
+      if (obj[ary1[i]] == undefined) {
+        aryNew.push(ary1[i])
+      }
+    }
+    return aryNew
   },
   /**
    * 创建一个切片数组，返回去除array前面n个的数组
@@ -99,13 +98,14 @@ var tyulei = {
     }
     return aryNew
   },
-  fill: function (ary, string, start = 0, end = ary.length) {
+  fill: function (ary, value, start = 0, end = ary.length) {
     let aryNew = []
     for (let i = 0; i < ary.length; i++) {
-      if (ary >= start && ary < end) {
-        aryNew.push(string)
+      if (i >= start && i < end) {
+        aryNew.push(value)
+      } else {
+        aryNew.push(ary[i])
       }
-      aryNew.push(ary[i])
     }
     return aryNew
   },
@@ -116,8 +116,9 @@ var tyulei = {
     if (fromindex < 0) {
       fromindex = ary.length + fromindex
     }
+
     for (let i = fromindex; i < ary.length; i++) {
-      if (ary[i] == value) {
+      if (ary[i] == value || ary[i] !== ary[i]) {
         return i
       }
     }
@@ -125,10 +126,10 @@ var tyulei = {
   },
   join: function (ary, separator) {
     let str = ''
-    for (let i = 0; i < ary.length; i++) {
-      str += ary[i] + separator
+    for (let i = 0; i < ary.length - 1; i++) {
+      str += ary[i] + separator.toString()
     }
-    return str
+    return str + ary[ary.length - 1]
   },
   last: function (ary) {
     return ary[ary.length - 1]
@@ -136,6 +137,8 @@ var tyulei = {
   lastIndexOf: function (ary, value, fromIndex = ary.length - 1) {
     for (let i = fromIndex; i >= 0; i--) {
       if (ary[i] == value) {
+        return i
+      } else if (ary[i] !== ary[i] && value !== value) {
         return i
       }
     }
@@ -163,7 +166,7 @@ var tyulei = {
     for (let i = 0; i < ary.length - 1; i++) {
       let flog = true
       if (ary[i] in obj) {
-        flog = flase
+        flog = false
       }
       if (flog) {
         aryNew.push(ary[i])
@@ -172,34 +175,27 @@ var tyulei = {
     return aryNew
   },
   pullAll: function (ary1, ary2) {
-    let obj = {}
-    let aryNew = []
-
-    for (let i = 1; i < ary2.length - 1; i++) {
-      obj[ary1[i]] = i
-    }
-    for (let i = 0; i < ary1.length - 1; i++) {
-      let flog = true
-      if (ary1[i] in obj) {
-        flog = false
-      }
-      if (flog) {
-        aryNew.push(ary1[i])
-      }
-    }
-    return aryNew
+    return ary1 = ary1.filter(x => !ary2.includes(x))
   },
-  pullAt: function (ary) {
+  /**
+   * 返回删除的数组，修改原数组
+   * @param {*} ary1 输入的数组
+   * @param {*} ary2 要删除的数值
+   */
+  pullAt: function (ary1, ary2) {
     let aryNew = []
-    for (let i = 0; i < ary.length; i++) {
-      for (let j = 1; j < arguments.length; j++) {
-        if (i == arguments[j]) {
-          aryNew.push(ary[i])
-        }
+    let aryRe = []
+    for (let i = 0; i < ary1.length; i++) {
+      if (ary2.includes(i)) {
+        aryNew.push(ary[i])
+      } else {
+        aryRe.push(ary[i])
       }
     }
-    tyulei.pullAll(ary, aryNew)
-
+    for (let i = 0; i < aryRe.length; i++) {
+      ary1[i] = aryRe[i]
+    }
+    ary1.splice(ary1.length - ary2.length, ary2.length)
     return aryNew
   },
   reverse: function (ary) {
@@ -238,7 +234,15 @@ var tyulei = {
     }
     return aryNew
   },
+  /**
+   *
+   * @param {*} ary
+   * @param {*} number
+   */
   take: function (ary, number = 1) {
+    if (number >= ary.length) {
+      return ary
+    }
     let aryNew = []
     for (let i = 0; i < number; i++) {
       aryNew.push(ary[i])
@@ -246,8 +250,12 @@ var tyulei = {
     return aryNew
   },
   takeRight: function (ary, number = 1) {
+    if (number >= ary, length) {
+      return ary
+    }
+    let number = ary.length - number
     let aryNew = []
-    for (let i = ary.length - 1; i > ary.length - 1 - number; i--) {
+    for (let i = number; i < ary.length; i++) {
       aryNew.push(ary[i])
     }
     return aryNew
@@ -287,32 +295,35 @@ var tyulei = {
     }
     return aryNew
   },
-  without: function (ary, values) {
+  without: function (ary, ...values) {
     let aryNew = []
+    values = [].concat(...values)
     for (let i = 0; i < ary.length; i++) {
-      if (arguments.indexOf(ary[i]) == -1) {
+      if (values.indexOf(ary[i]) == -1) {
         aryNew.push(ary[i])
       }
     }
     return aryNew
   },
   /**
-   * 传入多个数组，去除里面重复的元素，返回一个去重后的数组
+   * 传入多个数组，去除里面重复的元素，返回一个去重且除去了重复元素的数组
    * @param {arrays} 传入多个数组
    * @return {array}  返回一个去重后的数组
    */
-  xor: function (arys) {
-    let obj = {}
-    let aryNew = []
-    for (let i = 0; i < arguments.length; i++) {
-      for (let j = 0; j < arguments[i].length; j++) {
-        if (obj[arguments[i][j]] == undefined) {
-          aryNew.push(arguments[i][j])
+  xor: function (...values) {
+    let ary = []
+    for (let i = 0; i < values.length; i++) {
+      for (let j = 0; j < values[i].length; j++) {
+        if (ary.includes(values[i][j]) == -1) {
+          ary.push(values[i][j])
+        } else {
+          ary.splice(ary.indexOf(values[i][j]), 1)
+          j--
         }
-        obj[arguments[i][j]] = i
       }
     }
-    return aryNew
+    return ary
+
   },
   /**
    * 输入两个数组，将他们转换成对象，第一数组里的值为属性，第二个数组里的为属性值
@@ -321,8 +332,8 @@ var tyulei = {
    */
   zipObject: function (ary1, ary2) {
     let obj = {}
-    let len = Math.max(ary1.length.ary2.length)
-    for (let i = 0; i < len.length; i++) {
+    let len = Math.max(ary1.length, ary2.length)
+    for (let i = 0; i < len; i++) {
       obj[ary1[i]] = ary2[i]
     }
     return obj
@@ -337,7 +348,7 @@ var tyulei = {
     if (value1 !== value1 && value2 !== value2) {
       return true
     }
-    if (value1 == value2) {
+    if (value1 === value2) {
       return true
     }
     return false
