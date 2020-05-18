@@ -88,7 +88,7 @@ var tyulei = {
   /**
    * 创建一个切片数组，返回去除array前面n个的数组
    * @param {Array} ary
-   * @param {Number} n
+   * @param {num} n
    * @return {Array}
    */
   drop: function (ary, n = 1) {
@@ -144,11 +144,11 @@ var tyulei = {
     }
     return -1
   },
-  nth: function (ary, number) {
-    if (number < 0) {
-      number = ary.length + number
+  nth: function (ary, num) {
+    if (num < 0) {
+      num = ary.length + num
     }
-    return ary[number]
+    return ary[num]
   },
   /**
    * 传入一个数组，删除数组中的给定值
@@ -237,25 +237,25 @@ var tyulei = {
   /**
    *
    * @param {*} ary
-   * @param {*} number
+   * @param {*} num
    */
-  take: function (ary, number = 1) {
-    if (number >= ary.length) {
+  take: function (ary, num = 1) {
+    if (num >= ary.length) {
       return ary
     }
     let aryNew = []
-    for (let i = 0; i < number; i++) {
+    for (let i = 0; i < num; i++) {
       aryNew.push(ary[i])
     }
     return aryNew
   },
-  takeRight: function (ary, number = 1) {
-    if (number >= ary, length) {
+  takeRight: function (ary, num = 1) {
+    if (num >= ary, length) {
       return ary
     }
-    let number = ary.length - number
+    num = ary.length - num
     let aryNew = []
-    for (let i = number; i < ary.length; i++) {
+    for (let i = num; i < ary.length; i++) {
       aryNew.push(ary[i])
     }
     return aryNew
@@ -377,14 +377,14 @@ var tyulei = {
     }
     return false
   },
-  add: function (number1, number2) {
-    return number1 + number2
+  add: function (num1, num2) {
+    return num1 + num2
   },
-  ceil: function (number, precision) {
+  ceil: function (num, precision) {
 
   },
-  dividend: function (number1, number2) {
-    return number1 / number2
+  dividend: function (num1, num2) {
+    return num1 / num2
   },
   max: function (ary) {
     if (ary.length = 0) {
@@ -420,11 +420,11 @@ var tyulei = {
     }
     return min
   },
-  multiply: function (number1, number2) {
-    return number1 * number2
+  multiply: function (num1, num2) {
+    return num1 * num2
   },
-  subtract: function (number1, number2) {
-    return number1 - number2
+  subtract: function (num1, num2) {
+    return num1 - num2
   },
   sum: function (ary) {
     let sum = 0
@@ -467,7 +467,7 @@ var tyulei = {
       }
     }
     return objNew
-  },
+  }
 
 
 
