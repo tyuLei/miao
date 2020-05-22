@@ -156,23 +156,9 @@ var tyulei = {
    * @param {value} 给出需要删除的值
    * return {Array} 返回一个数组
    */
-  pull: function (ary) {
-    let obj = {}
-    let aryNew = []
-
-    for (let i = 1; i < arguments.length - 1; i++) {
-      obj[ary[i]] = i
-    }
-    for (let i = 0; i < ary.length - 1; i++) {
-      let flog = true
-      if (ary[i] in obj) {
-        flog = false
-      }
-      if (flog) {
-        aryNew.push(ary[i])
-      }
-    }
-    return aryNew
+  pull: function (ary, values) {
+    values = [].concat(values)
+    return ary = ary.filter(x => !values.includes(x)
   },
   pullAll: function (ary1, ary2) {
     return ary1 = ary1.filter(x => !ary2.includes(x))
@@ -250,7 +236,7 @@ var tyulei = {
     return aryNew
   },
   takeRight: function (ary, num = 1) {
-    if (num >= ary, length) {
+    if (num >= ary.length) {
       return ary
     }
     num = ary.length - num
@@ -314,11 +300,11 @@ var tyulei = {
     let ary = []
     for (let i = 0; i < values.length; i++) {
       for (let j = 0; j < values[i].length; j++) {
-        if (ary.includes(values[i][j]) == -1) {
+        if (!ary.includes(values[i][j])) {
           ary.push(values[i][j])
         } else {
           ary.splice(ary.indexOf(values[i][j]), 1)
-          j--
+
         }
       }
     }
@@ -387,8 +373,8 @@ var tyulei = {
     return num1 / num2
   },
   max: function (ary) {
-    if (ary.length = 0) {
-      return []
+    if (ary.length == 0) {
+      return undefined
     }
     let max = -Infinity
     for (let i = 0; i < ary.length; i++) {
@@ -399,8 +385,8 @@ var tyulei = {
     return max
   },
   mean: function (ary) {
-    if (ary.length = []) {
-      return []
+    if (ary.length == 0) {
+      return undefined
     }
     let sum = 0
     for (let i = 0; i < ary.length; i++) {
@@ -445,10 +431,30 @@ var tyulei = {
     return objNew
   },
   hasIn: function (obj, path) {
-    if (obj[path] == undefined) {
-      return false
+    if (Array.isArray(path)) {
+      let temp = path
+    } else {
+      temp = ''
+      for (let i of path) {
+        if ('[.'.includes(i)) {
+          temp = temp + ','
+        } else if (i === ']') {
+          continue
+        } else {
+          temp = temp + i
+        }
+      }
+      temp = temp.split()
+
+      for (let i of temp) {
+        if (!obj[i]) {
+          return false
+        } else {
+          obj = obj[i]
+        }
+      }
+      return true
     }
-    return true
   },
   invert: function (obj) {
     let objNew = {}
@@ -459,15 +465,200 @@ var tyulei = {
   },
   omit: function (obj, props) {
     let objNew = {}
-    for (let i = 0; i < props.length; i++) {
-      for (let prop in obj) {
-        if (prop !== props[i]) {
-          objNew[prop] = obj[prop]
-        }
+    let map = {}
+    for (let i in props) {
+      map[props[i]] = true
+    }
+    for (let i in obj) {
+      if (map[i]) {
+        continue
       }
+      objNew[i] = obj[i]
     }
     return objNew
-  }
+  },
+  camelCase: function (string) {
+    let newStr = ''
+    let flog
+    string = string.toLowerCase()
+    if (string.slice(0, 2) === '--' || string.slice(0, 2) === '__') {
+      string = string.slice(2, -2)
+    }
+
+    for (let char in string) {
+
+      if (string[char] === '-' || string[char] === '-' || string[char] == ' ') {
+        flog = true
+      } else if (flog) {
+        newStr += string[char].toUpperCase()
+        flog = false
+      } else {
+        newStr += string[char]
+      }
+    }
+
+    return newStr
+
+  },
+  capitalize: function (string) {
+    string = string.toLowerCase()
+    string = string[0].toUpperCase() + string.slice(1)
+    return string
+  },
+
+  /*kababCase: function (string) {
+    let words = "";
+    let prev = 0;
+    for (let char of string) {
+      //ascii码A是65，Z是90，a是97，z是122
+      let n = char.charCodeAt(0);
+      if (!((n >= 65 && n <= 90) || (n >= 97 && n <= 122))) {
+        words = words.concat(",");
+      } else if (n >= 65 && n <= 90 && prev >= 97 && prev <= 122) {
+        words = words.concat(",").concat(char);
+      } else {
+        words = words.concat(char);
+      }
+      prev = n;
+    }
+    words = words.split(",");
+    words = words.filter((x) => x);
+
+    let res = [];
+    for (let i = 0; i < words.length; i++) {
+      res.push(words[i].toLowerCase());
+    }
+    return res.join("-");
+  },*/
+  kababCase: function (string) {
+    let answer = ''
+    let last = 0
+    let n
+    for (let i in string) {
+      n = string.charCodeAt(i)
+      if (!((n >= 65 && n <= 90) || (n >= 97 && n <= 122))) {
+        answer = answer + ','
+      } else if (n >= 65 && n <= 90 && last >= 97 && last <= 122) {
+        answer = answer + ',' + string[i]
+      } else {
+        answer = answer + string[i]
+      }
+      flog = n
+    }
+    answer = answer.split(',')
+    answer = answer.filter(x => x)
+
+    let result = []
+    for (let i in answer) {
+      result.push(answer[i].toLowerCase())
+    }
+    return result.join('-')
+  },
+  endsWith: function (string, char, index = string.length - 1) {
+    return string[index] == char
+  },
+  lowerCase: function (string) {
+    let answer = ''
+    let n, flog
+    for (let i of string) {
+      n = i.charCodeAt()
+      if (!((n >= 65 && n <= 90) || (n >= 97 && n <= 122))) {
+        answer = answer + ','
+      } else if (n >= 65 && n <= 90 && flog >= 97 && flog <= 122) {
+        answer = answer + ',' + i
+      } else {
+        answer = answer + i
+      }
+      flog = n
+    }
+    answer = answer.split(",")
+    answer = answer.filter(x => x)
+
+    let result = []
+    for (let i of answer) {
+      result.push(i.toLowerCase())
+    }
+
+    return answer.join(' ')
+  },
+  lowerFirst: function (string) {
+    return string[0].toLowerCase + string.splice(1)
+  },
+  pad: function (string, long, extra) {
+    //先留出字符串两边的空间，如果不能平分，把多的留给右边
+    //难点是空白的循环填充
+    let left = Math.floor((long - string.length) / 2)
+    let right = Math.ceil((long - string.length) / 2)
+    let words = ''
+
+    for (let i = 0; i < left; i++) {
+      var j = 0
+      words += extra[j]
+      j++
+      if (j >= extra.length) {
+        j = 0
+      }
+    }
+
+    words += string
+
+    for (let i = 0; i < right; i++) {
+      j = 0
+      words += extra[j]
+      j++
+      if (j >= extra.length) {
+        j = 0
+      }
+    }
+
+    return words
+  },
+  padEnd: function (string, long, extra) {
+    let words = ""
+    words += string
+    right = long - string.length
+
+    for (let i = 0; i < right; i++) {
+      let j = 0
+      words += extra[j]
+      j++
+      if (j >= extra.length) {
+        j = 0
+      }
+    }
+    return words
+  },
+  padStart: function (string, long, extra) {
+    let words = ""
+    left = long - string.length
+
+    for (let i = 0; i < left; i++) {
+      let j = 0
+      words += extra[j]
+      j++
+      if (j >= extra.length) {
+        j = 0
+      }
+    }
+    words += string
+    return words
+  },
+  repeat: function (string, count) {
+    let words = ''
+    for (let i = 0; i < count; i++) {
+      words += string
+    }
+    return words
+  },
+  split: function (string, del, long) {
+    if (typeof del == 'string') {
+      string = string.split(del)
+    } else {
+      let reg = string.match(del)
+      string = string.split(reg[0])
+    }
+    return string.slice(0, long)
+  },
 
 
 
