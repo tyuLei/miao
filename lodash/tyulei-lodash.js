@@ -158,7 +158,9 @@ var tyulei = {
    */
   pull: function (ary, values) {
     values = [].concat(values)
-    return ary = ary.filter(x => !values.includes(x)
+    return ary = ary.filter(x => !values.includes(x))
+
+
   },
   pullAll: function (ary1, ary2) {
     return ary1 = ary1.filter(x => !ary2.includes(x))
