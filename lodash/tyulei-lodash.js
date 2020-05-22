@@ -394,13 +394,13 @@ var tyulei = {
     }
     let sum = 0
     for (let i = 0; i < ary.length; i++) {
-      sum = + ary[i]
+      sum += ary[i]
     }
     return sum / ary.length
   },
   min: function (ary) {
-    if (ary.length = 0) {
-      return []
+    if (ary.length == 0) {
+      return null
     }
     let min = Infinity
     for (let i = 0; i < ary.length; i++) {
@@ -448,7 +448,7 @@ var tyulei = {
           temp = temp + i
         }
       }
-      temp = temp.split("")
+      temp = temp.split(",")
       temp = temp.filter(x => x)
 
       for (let i of temp) {
@@ -491,7 +491,6 @@ var tyulei = {
     }
 
     for (let char in string) {
-
       if (string[char] === '_' || string[char] === '-' || string[char] == ' ') {
         flog = true
       } else if (flog) {
@@ -501,7 +500,6 @@ var tyulei = {
         newStr += string[char]
       }
     }
-
     return newStr
 
   },
@@ -560,7 +558,7 @@ var tyulei = {
     return result.join('-')
   },
   endsWith: function (string, char, index = string.length - 1) {
-    return string[index] == char
+    return string[index - 1] == char
   },
   lowerCase: function (string) {
     let answer = ''
@@ -584,10 +582,10 @@ var tyulei = {
       result.push(i.toLowerCase())
     }
 
-    return answer.join(' ')
+    return result.join(' ')
   },
   lowerFirst: function (string) {
-    return string[0].toLowerCase + string.splice(1)
+    return string[0].toLowerCase + string.slice(1)
   },
   pad: function (string, long, extra = " ") {
     //先留出字符串两边的空间，如果不能平分，把多的留给右边
@@ -596,8 +594,8 @@ var tyulei = {
     let right = Math.ceil((long - string.length) / 2)
     let words = ''
 
+    var j = 0
     for (let i = 0; i < left; i++) {
-      var j = 0
       words += extra[j]
       j++
       if (j >= extra.length) {
@@ -608,7 +606,7 @@ var tyulei = {
     words += string
 
     for (let i = 0; i < right; i++) {
-      j = 0
+
       words += extra[j]
       j++
       if (j >= extra.length) {
