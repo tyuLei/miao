@@ -501,7 +501,7 @@
 
       for (let char in string) {
 
-        if (string[char] === '-' || string[char] === '-' || string[char] == ' ') {
+        if (string[char] === '_' || string[char] === '-' || string[char] == ' ') {
           flog = true
         } else if (flog) {
           newStr += string[char].toUpperCase()
@@ -569,7 +569,7 @@
       return result.join('-')
     },
     endsWith: function (string, char, index = string.length - 1) {
-      return string[index] == char
+      return string[index - 1] == char
     },
     lowerCase: function (string) {
       let answer = ''
@@ -593,20 +593,19 @@
         result.push(i.toLowerCase())
       }
 
-      return answer.join(' ')
+      return result.join(' ')
     },
     lowerFirst: function (string) {
-      return string[0].toLowerCase + string.splice(1)
+      return string[0].toLowerCase + string.slice(1)
     },
-    pad: function (string, long, extra) {
+    pad: function (string, long, extra = ' ') {
       //先留出字符串两边的空间，如果不能平分，把多的留给右边
       //难点是空白的循环填充
       let left = Math.floor((long - string.length) / 2)
       let right = Math.ceil((long - string.length) / 2)
       let words = ''
-
+      var j = 0
       for (let i = 0; i < left; i++) {
-        var j = 0
         words += extra[j]
         j++
         if (j >= extra.length) {
@@ -617,7 +616,6 @@
       words += string
 
       for (let i = 0; i < right; i++) {
-        j = 0
         words += extra[j]
         j++
         if (j >= extra.length) {
@@ -632,8 +630,8 @@
       words += string
       right = long - string.length
 
+      let j = 0
       for (let i = 0; i < right; i++) {
-        let j = 0
         words += extra[j]
         j++
         if (j >= extra.length) {
@@ -646,8 +644,8 @@
       let words = ""
       left = long - string.length
 
+      let j = 0
       for (let i = 0; i < left; i++) {
-        let j = 0
         words += extra[j]
         j++
         if (j >= extra.length) {

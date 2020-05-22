@@ -156,11 +156,9 @@ var tyulei = {
    * @param {value} 给出需要删除的值
    * return {Array} 返回一个数组
    */
-  pull: function (ary, values) {
+  pull: function (ary, ...values) {
     values = [].concat(values)
     return ary = ary.filter(x => !values.includes(x))
-
-
   },
   pullAll: function (ary1, ary2) {
     return ary1 = ary1.filter(x => !ary2.includes(x))
@@ -175,9 +173,9 @@ var tyulei = {
     let aryRe = []
     for (let i = 0; i < ary1.length; i++) {
       if (ary2.includes(i)) {
-        aryNew.push(ary[i])
+        aryNew.push(ary1[i])
       } else {
-        aryRe.push(ary[i])
+        aryRe.push(ary1[i])
       }
     }
     for (let i = 0; i < aryRe.length; i++) {
@@ -300,18 +298,22 @@ var tyulei = {
    */
   xor: function (...values) {
     let ary = []
+    let result = []
+    values = [].concat(...values)
     for (let i = 0; i < values.length; i++) {
-      for (let j = 0; j < values[i].length; j++) {
-        if (!ary.includes(values[i][j])) {
-          ary.push(values[i][j])
-        } else {
-          ary.splice(ary.indexOf(values[i][j]), 1)
-
-        }
+      if (!ary.includes(values[i])) {
+        ary.push(values[i])
+      } else {
+        result.push(values[i])
       }
     }
-    return ary
-
+    let answer = []
+    for (let j of ary) {
+      if (!result.includes(j)) {
+        answer.push(j)
+      }
+    }
+    return answer
   },
   /**
    * 输入两个数组，将他们转换成对象，第一数组里的值为属性，第二个数组里的为属性值
@@ -446,7 +448,8 @@ var tyulei = {
           temp = temp + i
         }
       }
-      temp = temp.split()
+      temp = temp.split("")
+      temp = temp.filter(x => x)
 
       for (let i of temp) {
         if (!obj[i]) {
@@ -489,7 +492,7 @@ var tyulei = {
 
     for (let char in string) {
 
-      if (string[char] === '-' || string[char] === '-' || string[char] == ' ') {
+      if (string[char] === '_' || string[char] === '-' || string[char] == ' ') {
         flog = true
       } else if (flog) {
         newStr += string[char].toUpperCase()
@@ -586,7 +589,7 @@ var tyulei = {
   lowerFirst: function (string) {
     return string[0].toLowerCase + string.splice(1)
   },
-  pad: function (string, long, extra) {
+  pad: function (string, long, extra = " ") {
     //先留出字符串两边的空间，如果不能平分，把多的留给右边
     //难点是空白的循环填充
     let left = Math.floor((long - string.length) / 2)
@@ -615,13 +618,13 @@ var tyulei = {
 
     return words
   },
-  padEnd: function (string, long, extra) {
+  padEnd: function (string, long, extra = " ") {
     let words = ""
     words += string
     right = long - string.length
 
+    let j = 0
     for (let i = 0; i < right; i++) {
-      let j = 0
       words += extra[j]
       j++
       if (j >= extra.length) {
@@ -630,12 +633,12 @@ var tyulei = {
     }
     return words
   },
-  padStart: function (string, long, extra) {
+  padStart: function (string, long, extra = " ") {
     let words = ""
     left = long - string.length
 
+    let j = 0
     for (let i = 0; i < left; i++) {
-      let j = 0
       words += extra[j]
       j++
       if (j >= extra.length) {
