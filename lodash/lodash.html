@@ -673,14 +673,204 @@
     },
     replace: function (string, match, rep) {
 
+    },
+
+
+    /**
+     * 前n次调用函数func时返回func，调用大于等于n次时返回func结果
+     * 参数是如何传入的，当before执行时，返回一个匿名函数，该匿名函数接收所有传入值
+    */
+    before: function (n, func) {
+      var i = 0
+      return function (...args) {
+        i++
+        if (i < n) {
+          var result = func(...args)
+        } else {
+          return result
+        }
+      }
+    },
+
+
+    after: function (n, func) {
+      var i = 0
+      i++
+      return function (...args) {
+        if (i > n) {
+          return func(...args)
+        }
+      }
+    },
+
+
+    /**
+     * 返回传入参数的前n项
+     * @param {function} func
+     * @param {number} n
+     */
+    ary: function (func, n = func.length) {// func的length为func的参数个数
+      return function (...arg) {
+        let nums = arg.slice(0, n)
+        return func(...nums)
+      }
+    },
+
+
+    /**
+     * 只接一个参数
+    */
+    unary: function (func) {
+      return function (arg) {
+        return func(arg)
+      }
+    },
+
+
+
+    flip: function (func) {
+      return function (...args) {
+        return func(...args.reverse())
+      }
+    },
+
+
+
+    //negate使用了闭包，函数的第一个返回值只保留第二返回值需要调用的参数
+    //修改函数内函数的参数，需要在中间插入一个匿名函数作为中转
+    negate: function (func) {
+      return function (...args) {
+        return !func(...args)
+      }
+    },
+
+    reject: function (ary, test) {
+      return filter(ary, negate(test))
+    },
+
+    //some: function
+
+
+    spread: function (func) {
+      return function (args) {
+        return func(...ary)
+      }
+    },
+
+
+
+    bind: function (func, ...args1) {
+      return function (...args2) {
+        let copy = args1.slice()
+        let j = 0
+        for (let i = 0; i < copy.length; i++) {
+          if (copy[i] == null) {
+            copy[i] = args2[j]
+            j++
+          }
+        }
+        while (j < args2.length) {
+          copy.push(args2[j++])
+        }
+        return func(...copy)
+      }
+    },
+
+
+    filter: function (ary, predicate) {
+      var test = predicate
+      if (typeof predicate == 'string') {
+        test = it => it[predicate]
+      } else if (typeof predicate == 'object') {
+        if (Array.isArray(predicate)) {
+          predicate = tyulei.fromPairs(predicate)
+        }
+        test = (it) => {
+          for (let key in predicate) {
+            if (predicate[key] !== it[key]) {
+              return false
+            }
+          }
+          return true
+        }
+      }
+
+      let result = []
+      for (let i = 0; i < ary.length; i++) {
+        if (test(ary[i], i, ary)) {
+          result.push(ary[i])
+        }
+      }
+
+      return result
+    },
+
+
+    fromPairs: function (ary) {
+      let result = {}
+
+      let aryNew = [].concat(...ary)
+      for (let i = 0; i < aryNew.length; i = i + 2) {
+        result[aryNew[i]] = aryNew[i + 1]
+      }
+      return result
+    },
+
+
+    get: function (obj, path, defaultValue) {
+      let ary = path
+      let result = obj
+      if (typeof ary === 'string') {
+        ary = []
+        for (let i of path) {
+          if (i !== '[' && i !== ']' && i !== '.') {
+            ary.push(i)
+          }
+        }
+
+      }
+      for (let i = 0; i < ary.length; i++) {
+        if (!result[ary[i]]) {
+          return defaultValue
+        }
+        result = result[ary[i]]
+      }
+
+      return result
+    },
+
+
+
+    curry: function (func, nums = func.length) {
+      let count = 0
+      return function func2(...args) {
+        count += args.length
+        if (count < nums) {
+          func.bind(null, ...args)
+
+        } else {
+          return func(...args)
+        }
+      }
+    },
+
+
+
+    forOwn: function (obj, action) {
+      let myOwn = Object.prototype.hasOwnProperty
+      for (let key in obj) {
+        if (myOwn.call(obj)) {
+
+          action(obj[key], key, obj)
+        }
+      }
+      return obj
     }
 
-
-
-
-
-
   }
+
+
+
 
 
 

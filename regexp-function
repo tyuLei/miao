@@ -1,0 +1,15 @@
+<script>
+  function replace(str, re, replacer){
+    let resulte = ''
+    let lastIndex = 0
+    let match
+    while(match = re.exec(str)) {
+      resulte += str.slice(lastIndex, match.index)
+      resulte += replacer(...match)
+      lastIndex = re.lastIndex
+    }
+    resulte += str.slice(lastIndex)
+    return resulte
+  }
+
+</script>
